@@ -23,6 +23,7 @@ Bonus:
 const app = new Vue({
     el: '#root',
     data: {
+        addTextTodo: '',
         todos: [
             {
                 text: 'Fare la spesa',
@@ -53,6 +54,14 @@ const app = new Vue({
             const arrSecondPart = this.todos.slice(positionTodo + 1, this.todos.length);
             arrComplete.push(...arrFirstPart, ...arrSecondPart);
             this.todos = arrComplete;
+        },
+        addTodo(){
+            const newTodo = {
+                text: this.addTextTodo,
+                done: false
+            }
+            this.todos.push(newTodo);
+            this.addTextTodo = "";
         }
     }
 })
