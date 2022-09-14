@@ -47,8 +47,12 @@ const app = new Vue({
         ]
     },
     methods: {
-        deleteTodo(){
-            console.log("sto cancellando")
+        deleteTodo(positionTodo){
+            const arrComplete = [];
+            const arrFirstPart = this.todos.slice(0, positionTodo);
+            const arrSecondPart = this.todos.slice(positionTodo + 1, this.todos.length);
+            arrComplete.push(...arrFirstPart, ...arrSecondPart);
+            this.todos = arrComplete;
         }
     }
 })
