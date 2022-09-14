@@ -10,6 +10,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.10/vue.min.js"
         integrity="sha512-H8u5mlZT1FD7MRlnUsODppkKyk+VEiCmncej8yZW1k/wUT90OQon0F9DSf/2Qh+7L/5UHd+xTLrMszjHEZc2BA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="css/style.css">
 
@@ -21,14 +24,15 @@
         <div class="container">
             <h1>TODO LIST</h1>
 
-            <!-- MILESTONE 1
-        Stampare all'interno di una lista, un item per ogni todo.
-        Se la proprietà done è uguale a true, visualizzare il testo del todo sbarrato.-->
+            <!-- MILESTONE 2
+                Visualizzare a fianco ad ogni item una "x": cliccando su di essa, il todo viene rimosso dalla lista.-->
 
             <ul>
                 <li v-for="(todo, index) in todos">
                     <p>
-                        <span>{{index + 1}}</span><span :class="{'l-through': todo.done}">{{todo.text}}</span>
+                        <span>{{index + 1}}</span>
+                        <span :class="{'l-through': todo.done}">{{todo.text}}</span>
+                        <span @click="deleteTodo(index)"><i class="fa-solid fa-xmark"></i></span>
                     </p>
                 </li>
             </ul>

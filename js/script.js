@@ -47,6 +47,8 @@ const app = new Vue({
         ]
     },
     methods: {
-
+        deleteTodo(){
+            console.log("sto cancellando")
+        }
     }
 })
