@@ -48,20 +48,25 @@ const app = new Vue({
         ]
     },
     methods: {
-        deleteTodo(positionTodo){
+        deleteTodo(positionTodo) {
             const arrComplete = [];
             const arrFirstPart = this.todos.slice(0, positionTodo);
             const arrSecondPart = this.todos.slice(positionTodo + 1, this.todos.length);
             arrComplete.push(...arrFirstPart, ...arrSecondPart);
             this.todos = arrComplete;
         },
-        addTodo(){
-            const newTodo = {
-                text: this.addTextTodo,
-                done: false
+        addTodo() {
+
+            const newText = this.addTextTodo.trim();
+
+            if (newText.length > 0) {
+                const newTodo = {
+                    text: newText,
+                    done: false
+                }
+                this.todos.push(newTodo);
+                this.addTextTodo = "";
             }
-            this.todos.push(newTodo);
-            this.addTextTodo = "";
         }
     }
 })
