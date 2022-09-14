@@ -6,45 +6,45 @@
 
 body {
     font-family: sans-serif;
+    background: rgb(255, 255, 255);
+    background: radial-gradient(circle, rgba(255, 255, 255, 1) 35%, rgba(181, 181, 181, 1) 100%);
 }
 
-.container{
+.container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-h1{
-    padding: 50px;
+h1 {
+    padding: 40px;
+    font-family: 'Lobster', cursive;
+    letter-spacing: 15px;
+    font-size: 3.5rem;
 }
 
-ul{
+ul {
     width: 90vh;
     font-size: 1.5rem;
     list-style-type: none;
-    padding: 40px 30px;
+    padding: 20px 50px;
     border-radius: 25px;
     border: 1px solid black;
 }
 
-li{
+li {
     margin: 20px 0;
     background-color: #eee;
     border-radius: 25px;
-    cursor: pointer;
-}
-
-p{
     position: relative;
 }
 
-p span{
+li span {
     display: inline-block;
-    height: 35px;
 }
 
-p span:nth-child(1){ 
+li span:nth-child(1) {
     width: 35px;
     margin: 10px;
     font-size: 1.3rem;
@@ -55,49 +55,82 @@ p span:nth-child(1){
     line-height: 35px;
 }
 
-p span:nth-child(2){
+li span:nth-child(2) {
+    display: inline-block;
+    width: calc(100% - 150px);
+    padding: 15px;
     margin-left: 10px;
-}
-
-p span:nth-child(3){
-    position: absolute;
-    top: 50%;
-    transform: translateY(-35%);
-    right: 20px;
     cursor: pointer;
 }
 
-span.l-through{
+li span:nth-child(3) {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0px;
+    width: 70px;
+    height: 100%;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ddd;
+    font-size: 1.2rem;
+}
+
+li span:nth-child(3):hover i {
+    transform: translateX(-5px);
+    color: red;
+    animation: vibration 150ms infinite alternate linear;
+    position: relative;
+}
+
+@keyframes vibration {
+    from {
+        transform: rotate(-25deg)
+    }
+
+    to {
+        transform: rotate(25deg)
+    }
+}
+
+span.l-through {
     text-decoration: line-through;
 }
 
-.areaAddTodo{
-    /* border: 1px solid red; */
+span.changeBgColor {
+    background-color: yellow !important;
+}
+
+.areaAddTodo {
     width: 90vh;
     display: flex;
     padding: 0px 30px 40px;
 }
 
-.areaAddTodo input{
+.areaAddTodo input {
     border: none;
     border-bottom: 1px dashed #000;
     flex-grow: 1;
     margin-left: 20px;
 }
 
-.areaAddTodo i{
+.areaAddTodo i {
     margin-left: 10px;
     margin-right: 20px;
 }
 
-.areaAddTodo button{
+.areaAddTodo button {
     padding: 5px 15px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
-.areaAddTodo button:hover{
+.areaAddTodo button:hover {
     border: 1px solid #000;
     padding: 4px 14px;
 }

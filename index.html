@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
         integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/style.css">
 
@@ -23,9 +26,6 @@
     <div id="root">
         <div class="container">
             <h1>TODO LIST</h1>
-
-            <!-- Bonus:
-                2- cliccando sul testo dell'item, invertire il valore della proprietà done del todo corrispondente (se done era uguale a false, impostare true e viceversa)-->
             <div class="areaAddTodo">
                 <h3>Aggiungi un nuovo TO DO:</h3>
                 <input type="text" @keyUp.enter="addTodo" v-model="addTextTodo">
@@ -34,12 +34,13 @@
             </div>
 
             <ul>
-                <li @click="changeDone(index)" v-for="(todo, index) in todos">
-                    <p>
-                        <span>{{index + 1}}</span>
-                        <span :class="{'l-through': todo.done}">{{todo.text}}</span>
-                        <span @click="deleteTodo(index)"><i class="fa-solid fa-xmark"></i></span>
-                    </p>
+                <li v-for="(todo, index) in todos">
+                    <span v-if="todo.done" :class="{'changeBgColor': todo.done}">
+                        <i class="fa-solid fa-check"></i>
+                    </span>
+                    <span v-else>{{index + 1}}</span>
+                    <span :class="{'l-through': todo.done}" @click="changeDone(index)">{{todo.text}}</span>
+                    <span @click="deleteTodo(index)"><i class="fa-solid fa-trash"></i></span>
                 </li>
             </ul>
 

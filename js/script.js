@@ -51,15 +51,22 @@ const app = new Vue({
         deleteTodo(positionTodo) {
             const arrComplete = [];
             const arrFirstPart = this.todos.slice(0, positionTodo);
-            const arrSecondPart = this.todos.slice(positionTodo + 1, this.todos.length);
+            const arrSecondPart = this.todos.slice(positionTodo + 1);
             arrComplete.push(...arrFirstPart, ...arrSecondPart);
             this.todos = arrComplete;
         },
         addTodo() {
+            let condition = false;
+            const newText = this.addTextTodo.trim().charAt(0).toUpperCase() +
+                this.addTextTodo.trim().slice(1);
 
-            const newText = this.addTextTodo.trim();
+            this.todos.forEach(element => {
+                if(element.text === newText){
+                    condition = true;
+                }
+            });
 
-            if (newText.length > 0) {
+            if (newText.length > 0 && !condition) {
                 const newTodo = {
                     text: newText,
                     done: false
@@ -68,7 +75,7 @@ const app = new Vue({
                 this.addTextTodo = "";
             }
         },
-        changeDone(positionTodo){
+        changeDone(positionTodo) {
             this.todos[positionTodo].done = !this.todos[positionTodo].done;
         }
     }
