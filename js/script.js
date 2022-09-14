@@ -63,6 +63,7 @@ const app = new Vue({
             this.todos.forEach(element => {
                 if(element.text === newText){
                     condition = true;
+                    this.addTextTodo = "";
                 }
             });
 
