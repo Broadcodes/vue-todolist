@@ -25,7 +25,7 @@
             <h1>TODO LIST</h1>
 
             <!-- Bonus:
-                1- oltre al click sul pulsante, intercettare anche il tasto ENTER per aggiungere il todo alla lista-->
+                2- cliccando sul testo dell'item, invertire il valore della proprietà done del todo corrispondente (se done era uguale a false, impostare true e viceversa)-->
             <div class="areaAddTodo">
                 <h3>Aggiungi un nuovo TO DO:</h3>
                 <input type="text" @keyUp.enter="addTodo" v-model="addTextTodo">
@@ -34,7 +34,7 @@
             </div>
 
             <ul>
-                <li v-for="(todo, index) in todos">
+                <li @click="changeDone(index)" v-for="(todo, index) in todos">
                     <p>
                         <span>{{index + 1}}</span>
                         <span :class="{'l-through': todo.done}">{{todo.text}}</span>

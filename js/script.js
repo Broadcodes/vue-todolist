@@ -67,6 +67,9 @@ const app = new Vue({
                 this.todos.push(newTodo);
                 this.addTextTodo = "";
             }
+        },
+        changeDone(positionTodo){
+            this.todos[positionTodo].done = !this.todos[positionTodo].done;
         }
     }
 })
